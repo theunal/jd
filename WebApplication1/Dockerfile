@@ -6,10 +6,10 @@ EXPOSE 7077
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["WebApplication1/WebApplication1.csproj", "WebApplication1/"]
-RUN dotnet restore "WebApplication1/WebApplication1.csproj"
+COPY ["WebApplication1/WebApplication1/WebApplication1.csproj", "WebApplication1/WebApplication1/"]
+RUN dotnet restore "WebApplication1/WebApplication1/WebApplication1.csproj"
 COPY . .
-WORKDIR "/src/WebApplication1"
+WORKDIR "/src/WebApplication1/WebApplication1"
 RUN dotnet build "WebApplication1.csproj" -c Release -o /app/build
 
 FROM build AS publish
